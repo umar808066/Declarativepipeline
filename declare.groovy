@@ -12,8 +12,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                sudo mvn clean package 
-                sudo apt update 
+                sudo apt update
+                sudo install maven -y
+                sudo mvn clean package  
                 sudo apt install unzip -y
                 sudo curl -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.95/bin/apache-tomcat-9.0.95.zip
                 sudo unzip apache-tomcat-9.0.95.zip 
