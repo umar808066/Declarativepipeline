@@ -39,7 +39,7 @@ pipeline {
                     sudo apt install npm
                     npm install
                     npm start &
-                    echo "Deployment in progress"
+                    echo "we are deploying"
                     '''
                 }
             }
