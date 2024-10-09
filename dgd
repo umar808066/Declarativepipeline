@@ -36,7 +36,7 @@ pipeline {
             steps {
                 dir('EMPLOYEE-DECLARITIVE-/frontend/') {
                     sh '''
-                    sudo apt install npm
+                    apt install npm
                     npm install
                     npm start &
                     echo "Deployment in progress"

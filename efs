@@ -1,19 +1,19 @@
 pipeline {
     agent {
-        label 'dummy' // mention the label of your webserver node provided in Jenkins
+        label 'dummy'
     }
     stages {
         stage('Pull') {
             steps {
                 echo "Pulling from GitHub"
-                git url: 'https://github.com/umar808066/EMPLOYEE-DECLARITIVE-', branch: 'main' // specify branch if needed
+                git url: 'https://github.com/umar808066/EMPLOYEE-DECLARITIVE-', branch: 'main'
             }
         }
         stage('Build') {
             steps {
-                script {
-                    // Update and install Node.js and npm if not already installed
-                    sh '''                   
+                dir('EMPLOYEE-DECLARITIVE-/frontend/') {
+                    // Run commands within the 'frontend' directory
+                    sh '''
                     sudo apt update
                     sudo apt install -y nodejs npm
                     sudo npm install -g n
@@ -25,18 +25,18 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo "Running tests"
-                // Add your actual testing commands here
-                sh '''
-                echo "Tests completed"
-                '''
+                dir('EMPLOYEE-DECLARITIVE-/frontend/') {
+                    echo "Running tests"
+                    sh '''
+                    echo "Tests completed"
+                    '''
+                }
             }
         }
         stage('Deploy') {
             steps {
                 dir('EMPLOYEE-DECLARITIVE-/frontend/') {
                     sh '''
-                    sudo apt install npm
                     npm install
                     npm start &
                     echo "Deployment in progress"
