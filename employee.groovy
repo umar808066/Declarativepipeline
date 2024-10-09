@@ -5,10 +5,8 @@ pipeline {
     stages {
           stage('Pull') {
             steps {
-                 sh '
-                 git clone https://github.com/umar808066/EMPLOYEE-DECLARITIVE-.git'
                  echo "we are pulling from github"
-                
+                 git "https://github.com/umar808066/EMPLOYEE-DECLARITIVE-.git"
             }
         }
         stage('Build') {
