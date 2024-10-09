@@ -6,12 +6,13 @@ pipeline {
           stage('Pull') {
             steps {
                  echo "we are pulling from github"
-                 git "https://github.com/umar808066/EMPLOYEES-.git"
+                 git "https://github.com/umar808066/EMPLOYEE-DECLARITIVE-.git"
             }
         }
         stage('Build') {
             steps {
                 sh '''
+                cd EMPLOYEE-DECLARITIVE-/frontend/
                 sudo apt update
                 sudo apt install -y nodejs npm
                 sudo npm install -g n
